@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "author": "Sistemas Digitales UNL",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-resistor", "id": "r1", "top": 60, "left": 180, "attrs": { "value": "330" } },
+    { "type": "wokwi-led", "id": "led1", "top": 10, "left": 290, "attrs": { "color": "red" } },
+    { "type": "wokwi-logic-analyzer", "id": "logic1", "top": 200, "left": 200, "attrs": { "channelNames": "SENAL,LED" } }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:D19", "r1:1", "green", [] ],
+    [ "r1:2", "led1:A", "green", [] ],
+    [ "led1:C", "esp:GND.1", "black", [] ],
+    [ "esp:D18", "logic1:D0", "orange", [] ],
+    [ "esp:D19", "logic1:D1", "blue", [] ],
+    [ "logic1:GND", "esp:GND.2", "black", [] ]
+  ]
+}
